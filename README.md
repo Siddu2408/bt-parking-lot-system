@@ -43,3 +43,7 @@ This starter kit is designed to help you get up and running with a Node.js proje
 5. spot_number
 6. size
 7. is_occupied
+
+## TestCase
+
+Command to run testcase - npm run test
