@@ -139,7 +139,7 @@ app.get(
   parkingController.findAvailableSpot.bind(parkingController)
 );
 app.put(
-  "/parking-spots/:spotId",
+  "/parking-spots/:parkingLotId/:spotId",
   parkingController.freeSpot.bind(parkingController)
 );
 

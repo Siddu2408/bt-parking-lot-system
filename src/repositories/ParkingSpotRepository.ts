@@ -19,9 +19,9 @@ export default class ParkingSpotRepository {
     );
   }
 
-  async update(parkingSpot: ParkingSpot): Promise<void> {
+  async update(parkingLotId: number, parkingSpot: ParkingSpot): Promise<void> {
     const index = this.parkingSpots.findIndex(
-      (spot) => spot.id === parkingSpot.id
+      (spot) => spot.id === parkingSpot.id && spot.parkingLotId === parkingLotId
     );
     if (index >= 0) {
       this.parkingSpots[index] = parkingSpot;

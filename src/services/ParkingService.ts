@@ -80,7 +80,7 @@ export class ParkingService {
 
     if (availableSpot) {
       availableSpot.isOccupied = true;
-      await this.parkingSpotRepository.update(availableSpot);
+      await this.parkingSpotRepository.update(parkingLotId, availableSpot);
       return availableSpot;
     }
 
@@ -88,14 +88,17 @@ export class ParkingService {
     return null;
   }
 
-  async freeSpot(spotId: number): Promise<ParkingSpot | null> {
+  async freeSpot(
+    parkingLotId: number,
+    spotId: number
+  ): Promise<ParkingSpot | null> {
     const parkingSpot = await this.parkingSpotRepository.getById(spotId);
     if (!parkingSpot) {
       throw new Error("Parking spot not found");
     }
 
     parkingSpot.isOccupied = false;
-    await this.parkingSpotRepository.update(parkingSpot);
+    await this.parkingSpotRepository.update(parkingLotId, parkingSpot);
 
     return parkingSpot;
   }

@@ -50,7 +50,7 @@ class ParkingController {
             try {
                 const parkingSpot = yield this.parkingService.findAvailableSpot(size, Number(parkingLotId));
                 if (parkingSpot) {
-                    res.json(parkingSpot);
+                    res.status(200).json(parkingSpot);
                 }
                 else {
                     res.status(404).json({ message: "No available spots found" });
@@ -58,15 +58,15 @@ class ParkingController {
             }
             catch (error) {
                 console.error(error);
-                res.status(500).json({ message: "Internal server error" });
+                res.status(400).json({ error: "Invalid parking lot ID" });
             }
         });
     }
     freeSpot(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { spotId } = req.params;
+            const { spotId, parkingLotId } = req.params;
             try {
-                const parkingSpot = yield this.parkingService.freeSpot(Number(spotId));
+                const parkingSpot = yield this.parkingService.freeSpot(Number(parkingLotId), Number(spotId));
                 if (parkingSpot) {
                     res.json(parkingSpot);
                 }
