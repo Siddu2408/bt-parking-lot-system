@@ -23,9 +23,9 @@ class ParkingSpotRepository {
             return (this.parkingSpots.find((parkingSpot) => parkingSpot.id === spotId) || null);
         });
     }
-    update(parkingSpot) {
+    update(parkingLotId, parkingSpot) {
         return __awaiter(this, void 0, void 0, function* () {
-            const index = this.parkingSpots.findIndex((spot) => spot.id === parkingSpot.id);
+            const index = this.parkingSpots.findIndex((spot) => spot.id === parkingSpot.id && spot.parkingLotId === parkingLotId);
             if (index >= 0) {
                 this.parkingSpots[index] = parkingSpot;
             }

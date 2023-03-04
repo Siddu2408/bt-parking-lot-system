@@ -9,3 +9,13 @@
   },
   "lib": ["es2015"]
 }
+
+// Fix the Bug related to Slot Ids
+
+// Create a Basic UI
+
+// There is NO RFID with the cars.
+
+// Add test cases.
+
+// Enable Unit test coverage.
