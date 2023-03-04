@@ -4,6 +4,8 @@ node_modules/
 # Ignore build output
 dist/
 
+coverage/
+
 # Ignore environment variables
 .env
 
