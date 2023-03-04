@@ -57,21 +57,21 @@ class ParkingService {
             }
             if (availableSpot) {
                 availableSpot.isOccupied = true;
-                yield this.parkingSpotRepository.update(availableSpot);
+                yield this.parkingSpotRepository.update(parkingLotId, availableSpot);
                 return availableSpot;
             }
             console.log("NO SLOT FOUND");
             return null;
         });
     }
-    freeSpot(spotId) {
+    freeSpot(parkingLotId, spotId) {
         return __awaiter(this, void 0, void 0, function* () {
             const parkingSpot = yield this.parkingSpotRepository.getById(spotId);
             if (!parkingSpot) {
                 throw new Error("Parking spot not found");
             }
             parkingSpot.isOccupied = false;
-            yield this.parkingSpotRepository.update(parkingSpot);
+            yield this.parkingSpotRepository.update(parkingLotId, parkingSpot);
             return parkingSpot;
         });
     }

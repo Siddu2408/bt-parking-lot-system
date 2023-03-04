@@ -12,7 +12,7 @@ export class ParkingController {
   async getAllParkingLots(req: Request, res: Response): Promise<void> {
     try {
       const parkingLots = await this.parkingService.getAllParkingLots();
-      res.json(parkingLots);
+      res.status(200).json(parkingLots);
     } catch (error) {
       console.error(error);
       res.status(500).json({ message: "Internal server error" });
@@ -27,7 +27,7 @@ export class ParkingController {
         Number(parkingLotId)
       );
       if (parkingLot) {
-        res.json(parkingLot);
+        res.status(200).json(parkingLot);
       } else {
         res.status(404).json({ message: "Parking lot not found" });
       }
@@ -57,10 +57,13 @@ export class ParkingController {
   }
 
   async freeSpot(req: Request, res: Response): Promise<void> {
-    const { spotId } = req.params;
+    const { spotId, parkingLotId } = req.params;
 
     try {
-      const parkingSpot = await this.parkingService.freeSpot(Number(spotId));
+      const parkingSpot = await this.parkingService.freeSpot(
+        Number(parkingLotId),
+        Number(spotId)
+      );
       if (parkingSpot) {
         res.json(parkingSpot);
       } else {

@@ -7,7 +7,7 @@
     "start": "tsc && node dist/index.js",
     "lint": "eslint . --ext .ts",
     "build": "npx tsc",
-    "test": "jest"
+    "test": "jest --coverage"
   },
   "keywords": [],
   "author": "",

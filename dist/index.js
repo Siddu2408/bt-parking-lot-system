@@ -10,6 +10,7 @@ const ParkingService_1 = require("./src/services/ParkingService");
 const ParkingLotRepository_1 = __importDefault(require("./src/repositories/ParkingLotRepository"));
 const ParkingSpotRepository_1 = __importDefault(require("./src/repositories/ParkingSpotRepository"));
 const CarSize_1 = require("./src/enums/CarSize");
+//DB connection needs to be implemented
 const parkingLots = [
     {
         id: 1,
@@ -119,7 +120,7 @@ const parkingController = new ParkingController_1.ParkingController(parkingServi
 app.get("/parking-lots", parkingController.getAllParkingLots.bind(parkingController));
 app.get("/parking-lots/:parkingLotId", parkingController.getParkingLotById.bind(parkingController));
 app.get("/parking-spots/:size/:parkingLotId", parkingController.findAvailableSpot.bind(parkingController));
-app.put("/parking-spots/:spotId", parkingController.freeSpot.bind(parkingController));
+app.put("/parking-spots/:parkingLotId/:spotId", parkingController.freeSpot.bind(parkingController));
 app.listen(PORT, () => {
     console.log(`Server listening on port ${PORT}`);
 });
