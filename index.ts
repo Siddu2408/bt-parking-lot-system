@@ -114,6 +114,16 @@ const parkingSpots: ParkingSpot[] = [
 
 const app = express();
 const PORT = 3000;
+const cors = require("cors");
+
+app.use(
+  cors({
+    origin: [
+      "https://bt-react-parking-lot.vercel.app",
+      "http://localhost:5173",
+    ],
+  })
+);
 
 app.use(express.json());
 
