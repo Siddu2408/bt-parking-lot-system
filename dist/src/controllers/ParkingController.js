@@ -18,7 +18,7 @@ class ParkingController {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 const parkingLots = yield this.parkingService.getAllParkingLots();
-                res.json(parkingLots);
+                res.status(200).json(parkingLots);
             }
             catch (error) {
                 console.error(error);
@@ -32,7 +32,7 @@ class ParkingController {
             try {
                 const parkingLot = yield this.parkingService.getParkingLotById(Number(parkingLotId));
                 if (parkingLot) {
-                    res.json(parkingLot);
+                    res.status(200).json(parkingLot);
                 }
                 else {
                     res.status(404).json({ message: "Parking lot not found" });

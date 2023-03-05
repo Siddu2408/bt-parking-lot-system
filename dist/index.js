@@ -112,6 +112,10 @@ const parkingSpots = [
 // Use the parkingLotRepository instance here
 const app = (0, express_1.default)();
 const PORT = 3000;
+const cors = require("cors");
+app.use(cors({
+    origin: "*",
+}));
 app.use(express_1.default.json());
 const parkingLotRepository = new ParkingLotRepository_1.default(parkingLots);
 const parkingSpotRepository = new ParkingSpotRepository_1.default(parkingSpots);
