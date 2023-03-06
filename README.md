@@ -46,4 +46,8 @@ This starter kit is designed to help you get up and running with a Node.js proje
 
 ## TestCase
 
-Command to run testcase - npm run test
+Command to run testcase - npm test
+
+## Demo - Live
+
+<a href="https://bt-react-parking-lot.vercel.app/">Click here to find live demo</a>
