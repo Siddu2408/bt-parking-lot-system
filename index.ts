@@ -137,7 +137,7 @@ app.get(
   "/parking-lots",
   parkingController.getAllParkingLots.bind(parkingController)
 );
-app.get(
+app.put(
   "/parking-lots/:parkingLotId",
   parkingController.getParkingLotById.bind(parkingController)
 );

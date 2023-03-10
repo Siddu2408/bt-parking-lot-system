@@ -136,4 +136,47 @@ describe("ParkingController", () => {
       });
     });
   });
+
+  describe("not sending parking lot id to getParkingLotById", () => {
+    it("should return error with Parking lot not found", async () => {
+      const req = {
+        params: {},
+      };
+
+      const res = {
+        status: jest.fn().mockReturnThis(),
+        json: jest.fn(),
+      };
+
+      await parkingController.getParkingLotById(req, res);
+
+      expect(res.status).toHaveBeenCalledWith(404);
+      expect(res.json).toHaveBeenCalledWith({
+        message: "Parking lot not found",
+      });
+    });
+  });
+
+  describe("Free up the allocatate parking spot", () => {
+    it("should return Parking spot freed successfully", async () => {
+      const req = {
+        params: {
+          spotId: 1,
+          parkingLotId: 1,
+        },
+      };
+
+      const res = {
+        status: jest.fn().mockReturnThis(),
+        json: jest.fn(),
+      };
+
+      await parkingController.freeSpot(req, res);
+
+      expect(res.status).toHaveBeenCalledWith(200);
+      expect(res.json).toHaveBeenCalledWith({
+        message: "Parking spot freed successfully",
+      });
+    });
+  });
 });

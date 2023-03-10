@@ -65,7 +65,7 @@ export class ParkingController {
         Number(spotId)
       );
       if (parkingSpot) {
-        res.json(parkingSpot);
+        res.status(200).json({ message: "Parking spot freed successfully" });
       } else {
         res.status(404).json({ message: "Parking spot not found" });
       }
